@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://images.pexels.com/photos/355810/pexels-photo-355810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#weather-container {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+#weather-info h3, h6, p {
+    margin: 10px 0;
+}
+
+input, button {
+    padding: 10px;
+    margin: 10px 5px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#loading {
+    font-size: 18px;
+    color: #007bff;
+}
+
+/* Responsive for mobile screens */
+@media (max-width: 600px) {
+    #weather-container {
+        width: 90%;
+    }
+}

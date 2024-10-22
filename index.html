@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <div id="weather-container">
+        <input id="city-input" type="text" placeholder="Enter City"/>
+        <button id="search-button">Search</button>
+        
+        <!-- Display Weather Information -->
+        <div id="weather-info">
+            <h3 id="city-name">Canada, Ontario - Toronto</h3>
+            <h6 id="city-time">Local Time</h6>
+            <p id="city-temp">Temperature: 13°C</p>
+            <p id="city-humidity">Humidity: 75%</p>
+            <p id="city-windspeed">Wind Speed: 15 kph</p>
+        </div>
+        
+        <!-- Loading Spinner -->
+        <div id="loading" style="display: none;">Loading...</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
