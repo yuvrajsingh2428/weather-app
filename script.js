@@ -18,7 +18,7 @@ async function getData(cityName) {
         weatherInfo.style.display = 'none';
         
         const response = await fetch(
-            `http://api.weatherapi.com/v1/current.json?key=d54290515cdb4d4aa3d145440242210&q=${cityName}&aqi=yes`
+            `https://api.weatherapi.com/v1/current.json?key=d54290515cdb4d4aa3d145440242210&q=${cityName}&aqi=yes` // Changed to HTTPS
         );
         
         if (!response.ok) {
