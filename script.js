@@ -18,7 +18,7 @@ async function getData(cityName) {
         weatherInfo.style.display = 'none';
         
         const response = await fetch(
-            `https://api.weatherapi.com/v1/current.json?key=d54290515cdb4d4aa3d145440242210&q=${cityName}&aqi=yes` // Changed to HTTPS
+            `https://api.weatherapi.com/v1/current.json?key=d54290515cdb4d4aa3d145440242210&q=${cityName}&aqi=yes`
         );
         
         if (!response.ok) {
@@ -53,17 +53,30 @@ button.addEventListener('click', async () => {
     }
 });
 
-// Geolocation to fetch weather based on current location
-navigator.geolocation.getCurrentPosition(async (position) => {
-    const { latitude, longitude } = position.coords;
-    const result = await getData(`${latitude},${longitude}`);
-    if (result) {
-        cityName.innerText = `${result.location.name}, ${result.location.region} - ${result.location.country}`;
-        cityTime.innerText = `Local Time: ${result.location.localtime}`;
-        cityTemp.innerText = `Temperature: ${result.current.temp_c}°C`;
-        cityHumidity.innerText = `Humidity: ${result.current.humidity}%`;
-        cityWindSpeed.innerText = `Wind Speed: ${result.current.wind_kph} kph`;
+// Function to get geolocation and fetch weather based on current location
+function fetchWeatherByLocation() {
+    // Check if Geolocation is supported
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const { latitude, longitude } = position.coords;
+            const result = await getData(`${latitude},${longitude}`);
+            if (result) {
+                cityName.innerText = `${result.location.name}, ${result.location.region} - ${result.location.country}`;
+                cityTime.innerText = `Local Time: ${result.location.localtime}`;
+                cityTemp.innerText = `Temperature: ${result.current.temp_c}°C`;
+                cityHumidity.innerText = `Humidity: ${result.current.humidity}%`;
+                cityWindSpeed.innerText = `Wind Speed: ${result.current.wind_kph} kph`;
 
-        weatherInfo.style.display = 'block';
+                weatherInfo.style.display = 'block';
+            }
+        }, (error) => {
+            console.error("Error getting location:", error);
+            alert("Could not get your location. Please check your browser settings.");
+        });
+    } else {
+        alert("Geolocation is not supported by your browser.");
     }
-});
+}
+
+// Add event listener to fetch weather by location when the page loads
+document.addEventListener("DOMContentLoaded", fetchWeatherByLocation);
